@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register | AI Study Planner</title>
+
+    <link rel="stylesheet" href="register.css">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <main class="register-page">
+
+        <!-- LEFT -->
+        <section class="register-info">
+
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <span>AI Study Planner</span>
+            </div>
+
+            <div class="info-content">
+
+                <p class="eyebrow">
+                    <i class="fa-solid fa-sparkles"></i>
+                    BUILD YOUR STUDY SPACE
+                </p>
+
+                <h1>
+                    Study with<br>
+                    <span>purpose.</span>
+                </h1>
+
+                <p class="description">
+                    Create your personal study workspace and keep
+                    everything you need for college in one place.
+                </p>
+
+                <div class="feature-list">
+
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </div>
+
+                        <div>
+                            <strong>Plan</strong>
+                            <p>Organize your study schedule.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-chart-simple"></i>
+                        </div>
+
+                        <div>
+                            <strong>Track</strong>
+                            <p>Monitor your academic progress.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+
+                        <div>
+                            <strong>Improve</strong>
+                            <p>Use AI to study more effectively.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p class="copyright">
+                © 2026 AI Study Planner
+            </p>
+
+        </section>
+
+
+        <!-- RIGHT -->
+        <section class="register-section">
+
+            <div class="register-card">
+
+                <div class="mobile-brand">
+
+                    <div class="brand-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+
+                    <span>AI Study Planner</span>
+
+                </div>
+
+
+                <div class="register-heading">
+
+                    <span class="step">
+                        STEP 01 / 01
+                    </span>
+
+                    <h2>Create your account</h2>
+
+                    <p>
+                        It only takes a minute to get started.
+                    </p>
+
+                </div>
+
+
+                <form id="registerForm">
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full name
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-user"></i>
+
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Your full name"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+                        <small id="nameError"></small>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            College email
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                        <small id="emailError"></small>
+
+                    </div>
+
+
+                    <!-- COURSE -->
+
+                    <div class="form-group">
+
+                        <label for="course">
+                            Course
+                        </label>
+
+                        <div class="input-wrapper select-wrapper">
+
+                            <i class="fa-solid fa-book-open"></i>
+
+                            <select id="course" required>
+
+                                <option value="">
+                                    Select your course
+                                </option>
+
+                                <option value="bsc-cs">
+                                    B.Sc. Computer Science
+                                </option>
+
+                                <option value="bca">
+                                    BCA
+                                </option>
+
+                                <option value="bsc-it">
+                                    B.Sc. Information Technology
+                                </option>
+
+                                <option value="other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Create a password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="togglePassword"
+                                class="password-toggle"
+                            >
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+
+                        </div>
+
+                        <div class="strength">
+
+                            <div class="strength-track">
+                                <span id="strengthBar"></span>
+                            </div>
+
+                            <span id="strengthText">
+                                Minimum 8 characters
+                            </span>
+
+                        </div>
+
+                        <small id="passwordError"></small>
+
+                    </div>
+
+
+                    <!-- CONFIRM -->
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-shield-halved"></i>
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                placeholder="Repeat your password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="toggleConfirm"
+                                class="password-toggle"
+                            >
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+
+                        </div>
+
+                        <small id="confirmError"></small>
+
+                    </div>
+
+
+                    <!-- TERMS -->
+
+                    <label class="terms">
+
+                        <input type="checkbox" id="terms">
+
+                        <span>
+                            I agree to the
+                            <a href="#">Terms</a>
+                            and
+                            <a href="#">Privacy Policy</a>.
+                        </span>
+
+                    </label>
+
+                    <small id="termsError"></small>
+
+
+                    <!-- BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="register-button"
+                        id="registerButton"
+                    >
+
+                        <span>Create account</span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+
+                    <!-- LOGIN -->
+
+                    <p class="login-link">
+
+                        Already have an account?
+
+                        <a href="login.html">
+                            Sign in
+                        </a>
+
+                    </p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="register.js"></script>
+
+</body>
+</html>

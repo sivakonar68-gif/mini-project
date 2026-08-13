@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | AI Study Planner</title>
+
+    <link rel="stylesheet" href="login.css">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <!-- LEFT SIDE -->
+        <section class="login-info">
+
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <span>AI Study Planner</span>
+            </div>
+
+            <div class="info-content">
+
+                <p class="eyebrow">
+                    <i class="fa-solid fa-sparkles"></i>
+                    YOUR ACADEMIC COMPANION
+                </p>
+
+                <h1>
+                    Plan smarter.<br>
+                    <span>Study better.</span>
+                </h1>
+
+                <p class="description">
+                    Organize your exams, assignments and study sessions
+                    with intelligent planning and personalized insights.
+                </p>
+
+                <div class="features">
+
+                    <div class="feature">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <div>
+                            <strong>Smart Planning</strong>
+                            <p>Build schedules around your workload.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <div>
+                            <strong>Track Progress</strong>
+                            <p>See how your study habits improve.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <i class="fa-solid fa-robot"></i>
+                        <div>
+                            <strong>AI Assistance</strong>
+                            <p>Get help whenever you need it.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p class="copyright">
+                © 2026 AI Study Planner
+            </p>
+
+        </section>
+
+
+        <!-- RIGHT SIDE -->
+        <section class="login-section">
+
+            <div class="login-card">
+
+                <div class="mobile-brand">
+                    <div class="brand-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+
+                    <span>AI Study Planner</span>
+                </div>
+
+                <div class="login-heading">
+                    <h2>Welcome back</h2>
+
+                    <p>
+                        Login to continue your learning journey.
+                    </p>
+                </div>
+
+
+                <form id="loginForm">
+
+                    <!-- EMAIL -->
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email address
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                        <small class="error" id="emailError"></small>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+                    <div class="form-group">
+
+                        <div class="label-row">
+
+                            <label for="password">
+                                Password
+                            </label>
+
+                            <a href="#" id="forgotPassword">
+                                Forgot password?
+                            </a>
+
+                        </div>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="togglePassword"
+                                aria-label="Show password"
+                            >
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+
+                        </div>
+
+                        <small class="error" id="passwordError"></small>
+
+                    </div>
+
+
+                    <!-- REMEMBER -->
+                    <div class="login-options">
+
+                        <label class="remember">
+
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                            >
+
+                            <span>Remember me</span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- LOGIN -->
+                    <button
+                        type="submit"
+                        class="login-button"
+                        id="loginButton"
+                    >
+                        <span>Login</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+
+                    <div class="divider">
+                        <span>or continue with</span>
+                    </div>
+
+
+                    <!-- SOCIAL -->
+                    <div class="social-buttons">
+
+                        <button
+                            type="button"
+                            class="social-button"
+                            id="googleLogin"
+                        >
+                            <i class="fa-brands fa-google"></i>
+                            Google
+                        </button>
+
+                        <button
+                            type="button"
+                            class="social-button"
+                            id="githubLogin"
+                        >
+                            <i class="fa-brands fa-github"></i>
+                            GitHub
+                        </button>
+
+                    </div>
+
+
+                    <!-- REGISTER -->
+                    <p class="register-text">
+                        Don't have an account?
+                        <a href="register.html">
+                            Create account
+                        </a>
+                    </p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="login.js"></script>
+
+</body>
+</html>

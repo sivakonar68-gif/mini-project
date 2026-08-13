@@ -1,0 +1,1055 @@
+/* =========================================================
+   AI STUDY PLANNER — POMODORO
+   ========================================================= */
+/* ================= COMPACT POMODORO ================= */
+
+.page {
+    padding: 28px 42px 35px;
+}
+
+.topbar {
+    margin-bottom: 22px;
+}
+
+.topbar h1 {
+    font-size: 38px;
+}
+
+.topbar p {
+    font-size: 13px;
+}
+
+.quick-stats {
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.stat-card {
+    min-height: 72px;
+    padding: 13px 16px;
+}
+
+.stat-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.mode-section {
+    gap: 10px;
+    margin-bottom: 17px;
+}
+
+.mode {
+    padding: 12px 15px;
+}
+
+.main-grid {
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.timer-card {
+    padding: 22px;
+}
+
+.subject-box {
+    margin-top: 17px;
+}
+
+.timer-wrap {
+    margin: 20px 0;
+}
+
+.timer-ring {
+    width: 220px;
+    height: 220px;
+}
+
+#timer {
+    font-size: 46px;
+}
+
+.side-panel {
+    gap: 12px;
+}
+
+.goal-card,
+.subject-card,
+.motivation-card {
+    padding: 17px;
+}
+
+.goal-number {
+    margin: 12px 0 9px;
+}
+
+.goal-number strong {
+    font-size: 29px;
+}
+
+.sessions {
+    padding: 20px;
+}
+
+.section-heading {
+    margin-bottom: 14px;
+}
+
+.section-heading h2 {
+    font-size: 18px;
+}
+
+.session-item {
+    min-height: 68px;
+    padding: 12px;
+}
+
+.session-num {
+    width: 34px;
+    height: 34px;
+}
+
+footer {
+    margin-top: 22px;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #070d19;
+    --sidebar: #08101f;
+    --card: #0d1728;
+    --card-2: #101c30;
+    --border: #203653;
+    --text: #f4f7fb;
+    --muted: #8da5c5;
+    --blue: #4d9cff;
+    --cyan: #27c5ee;
+    --green: #27d98b;
+    --purple: #9b7cff;
+    --orange: #ffad5c;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 325px;
+    height: 100vh;
+    padding: 42px 23px;
+    background: var(--sidebar);
+    border-right: 1px solid #263957;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    margin-bottom: 55px;
+}
+
+.logo-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #4d9cff, #20c4ed);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 25px;
+    box-shadow: 0 8px 25px rgba(39, 170, 255, 0.2);
+}
+
+.logo span {
+    color: white;
+    font-size: 25px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.nav-section {
+    margin-bottom: 42px;
+}
+
+.nav-title {
+    margin: 0 0 20px 15px;
+
+    color: #526988;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.sidebar a {
+    height: 58px;
+    padding: 0 18px;
+    margin-bottom: 7px;
+
+    display: flex;
+    align-items: center;
+    gap: 22px;
+
+    color: #8ea8ca;
+    text-decoration: none;
+
+    border-radius: 14px;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.sidebar a i {
+    width: 22px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.sidebar a:hover {
+    color: white;
+    background: #101f35;
+}
+
+.sidebar a.active {
+    color: var(--blue);
+    background: #112a45;
+    border: 1px solid #174c7d;
+}
+
+.account-section {
+    margin-top: 5px;
+}
+
+/* =========================================================
+   MAIN PAGE
+   ========================================================= */
+
+.page {
+    width: calc(100% - 325px);
+    margin-left: 325px;
+    padding: 42px 55px 50px;
+    min-height: 100vh;
+}
+
+/* =========================================================
+   TOP HEADER
+   ========================================================= */
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+
+    margin-bottom: 35px;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--blue);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.topbar h1 {
+    margin-top: 8px;
+
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 800;
+    letter-spacing: -2px;
+}
+
+.topbar p {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+/* =========================================================
+   FUNNY STICKER
+   ========================================================= */
+
+.funny-sticker {
+    min-width: 235px;
+    padding: 16px 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    background: #0d192c;
+    border: 1px solid #294263;
+    border-radius: 18px;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+}
+
+.sticker-emoji {
+    font-size: 37px;
+}
+
+.funny-sticker strong {
+    display: block;
+
+    color: white;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.funny-sticker span {
+    display: block;
+    margin-top: 5px;
+
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* =========================================================
+   QUICK STATS
+   ========================================================= */
+
+.quick-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    min-height: 92px;
+    padding: 18px 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    transition: 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    border-color: #31547b;
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+}
+
+.stat-icon.blue {
+    background: rgba(77, 156, 255, 0.12);
+    color: var(--blue);
+}
+
+.stat-icon.purple {
+    background: rgba(155, 124, 255, 0.12);
+    color: var(--purple);
+}
+
+.stat-icon.green {
+    background: rgba(39, 217, 139, 0.12);
+    color: var(--green);
+}
+
+.stat-card span {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.stat-card strong {
+    display: block;
+    color: white;
+    font-size: 19px;
+}
+
+/* =========================================================
+   MODES
+   ========================================================= */
+
+.mode-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+
+    margin-bottom: 25px;
+}
+
+.mode {
+    padding: 17px 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    color: var(--muted);
+    background: #0b1525;
+
+    border: 1px solid var(--border);
+    border-radius: 17px;
+
+    cursor: pointer;
+    text-align: left;
+
+    transition: 0.2s ease;
+}
+
+.mode i {
+    font-size: 20px;
+}
+
+.mode strong {
+    display: block;
+    color: white;
+    font-size: 14px;
+}
+
+.mode span {
+    display: block;
+    margin-top: 3px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.mode:hover {
+    border-color: #31547b;
+    transform: translateY(-2px);
+}
+
+.mode.active {
+    color: var(--blue);
+    background: #10243b;
+    border-color: #27659c;
+}
+
+.mode.active strong {
+    color: white;
+}
+
+/* =========================================================
+   MAIN GRID
+   ========================================================= */
+
+.main-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(290px, 0.8fr);
+    gap: 22px;
+
+    margin-bottom: 35px;
+}
+
+/* =========================================================
+   TIMER CARD
+   ========================================================= */
+
+.timer-card {
+    padding: 30px;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(77, 156, 255, 0.07),
+            transparent 38%
+        ),
+        var(--card);
+
+    border: 1px solid var(--border);
+    border-radius: 24px;
+}
+
+.timer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#timerMode {
+    color: var(--blue);
+}
+
+/* =========================================================
+   SUBJECT
+   ========================================================= */
+
+.subject-box {
+    margin-top: 25px;
+}
+
+.subject-box label {
+    display: block;
+    margin-bottom: 9px;
+
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+
+.subject-box label i {
+    color: var(--blue);
+    margin-right: 6px;
+}
+
+.subject-box select {
+    width: 100%;
+    padding: 13px 15px;
+
+    color: white;
+    background: #091322;
+
+    border: 1px solid #2a4261;
+    border-radius: 12px;
+
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.subject-box select:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(77, 156, 255, 0.1);
+}
+
+/* =========================================================
+   TIMER
+   ========================================================= */
+
+.timer-wrap {
+    display: flex;
+    justify-content: center;
+
+    margin: 30px 0;
+}
+
+.timer-ring {
+    width: 285px;
+    height: 285px;
+    padding: 9px;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            var(--blue),
+            var(--cyan),
+            #3155ff,
+            var(--blue)
+        );
+
+    box-shadow:
+        0 0 55px rgba(77, 156, 255, 0.13);
+}
+
+.timer-inner {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    background: #091322;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#timer {
+    color: white;
+    font-size: 58px;
+    font-weight: 800;
+    letter-spacing: -3px;
+}
+
+#timerStatus {
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.control {
+    min-width: 120px;
+    padding: 13px 18px;
+
+    border-radius: 12px;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.control:hover {
+    transform: translateY(-2px);
+}
+
+.control.primary {
+    color: white;
+    background: linear-gradient(135deg, #438fff, #2879ed);
+    border: 1px solid #5aa5ff;
+    box-shadow: 0 8px 25px rgba(57, 139, 255, 0.2);
+}
+
+.control.secondary {
+    color: #a9bdd8;
+    background: #0b1525;
+    border: 1px solid #29415f;
+}
+
+.control.secondary:hover {
+    color: white;
+    border-color: #41648d;
+}
+
+.quote {
+    margin-top: 20px;
+
+    color: #7088a8;
+    font-size: 13px;
+    text-align: center;
+    font-style: italic;
+}
+
+/* =========================================================
+   RIGHT PANEL
+   ========================================================= */
+
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.goal-card,
+.subject-card,
+.motivation-card {
+    padding: 23px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+}
+
+.card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+}
+
+.card-title i {
+    color: var(--blue);
+    font-size: 17px;
+}
+
+.goal-number {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+
+    margin: 20px 0 13px;
+}
+
+.goal-number strong {
+    color: white;
+    font-size: 37px;
+}
+
+.goal-number span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.progress {
+    height: 8px;
+    overflow: hidden;
+
+    background: #17253a;
+    border-radius: 20px;
+}
+
+#goalProgress {
+    width: 0%;
+    height: 100%;
+
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+
+    border-radius: inherit;
+
+    transition: width 0.4s ease;
+}
+
+.goal-card p,
+.subject-card p {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.subject-card h3 {
+    margin-top: 17px;
+
+    color: white;
+    font-size: 22px;
+}
+
+.motivation-card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(155, 124, 255, 0.09),
+            transparent
+        ),
+        var(--card);
+}
+
+.motivation-card > span {
+    color: var(--purple);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.motivation-card h3 {
+    margin-top: 12px;
+
+    color: white;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+#motivationBtn {
+    margin-top: 17px;
+    padding: 0;
+
+    color: var(--blue);
+    background: none;
+    border: none;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+#motivationBtn i {
+    margin-left: 5px;
+}
+
+/* =========================================================
+   SESSIONS
+   ========================================================= */
+
+.sessions {
+    padding: 27px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.section-heading h2 {
+    margin-top: 7px;
+
+    color: white;
+    font-size: 22px;
+}
+
+#progressText {
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.session-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 13px;
+}
+
+.session-item {
+    min-height: 82px;
+    padding: 16px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    background: #0a1424;
+    border: 1px solid #1c314c;
+    border-radius: 15px;
+
+    transition: 0.2s ease;
+}
+
+.session-item:hover {
+    border-color: #31547b;
+    transform: translateY(-2px);
+}
+
+.session-num {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--blue);
+    background: rgba(77, 156, 255, 0.1);
+
+    border-radius: 11px;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.session-item strong {
+    display: block;
+
+    color: white;
+    font-size: 13px;
+}
+
+.session-item span {
+    display: block;
+    margin-top: 4px;
+
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.session-item > i {
+    margin-left: auto;
+
+    color: #334a67;
+    font-size: 20px;
+}
+
+.session-item.completed {
+    border-color: rgba(39, 217, 139, 0.35);
+    background: rgba(39, 217, 139, 0.05);
+}
+
+.session-item.completed > i {
+    color: var(--green);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    margin-top: 35px;
+
+    color: #536b89;
+    font-size: 12px;
+    text-align: center;
+}
+
+footer span {
+    margin: 0 8px;
+    color: #314967;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .sidebar {
+        width: 250px;
+    }
+
+    .page {
+        width: calc(100% - 250px);
+        margin-left: 250px;
+        padding: 35px;
+    }
+
+    .logo span {
+        font-size: 20px;
+    }
+
+    .sidebar a {
+        font-size: 15px;
+    }
+
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .side-panel {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+@media (max-width: 850px) {
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .logo {
+        margin-bottom: 25px;
+    }
+
+    .nav-section {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 15px;
+        overflow-x: auto;
+    }
+
+    .nav-title {
+        display: none;
+    }
+
+    .sidebar a {
+        flex: 0 0 auto;
+        margin: 0;
+    }
+
+    .account-section {
+        margin-top: 0;
+    }
+
+    .page {
+        width: 100%;
+        margin-left: 0;
+        padding: 25px;
+    }
+
+    .quick-stats,
+    .mode-section {
+        grid-template-columns: 1fr;
+    }
+
+    .session-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .side-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .funny-sticker {
+        width: 100%;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .page {
+        padding: 20px 15px;
+    }
+
+    .timer-card {
+        padding: 20px 15px;
+    }
+
+    .timer-ring {
+        width: 230px;
+        height: 230px;
+    }
+
+    #timer {
+        font-size: 45px;
+    }
+
+    .controls {
+        flex-wrap: wrap;
+    }
+
+    .control {
+        flex: 1;
+        min-width: 95px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+}

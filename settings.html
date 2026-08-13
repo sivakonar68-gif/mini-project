@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Settings | AI Study Planner</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="settings.css">
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <div class="logo-icon">
+            <i class="fa-solid fa-brain"></i>
+        </div>
+
+        <span>
+            AI Study<br>
+            Planner
+        </span>
+    </div>
+
+    <div class="nav-section">
+
+        <div class="nav-title">MAIN</div>
+
+        <a href="dashboard.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="planner.html">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>Planner</span>
+        </a>
+
+        <a href="pomodoro.html">
+            <i class="fa-solid fa-clock"></i>
+            <span>Pomodoro</span>
+        </a>
+
+        <a href="analytics.html">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Analytics</span>
+        </a>
+
+    </div>
+
+    <div class="nav-section">
+
+        <div class="nav-title">ACCOUNT</div>
+
+        <a href="settings.html" class="active">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+        </a>
+
+        <a href="#" id="logoutBtn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main-content">
+
+    <div class="page-header">
+
+        <div>
+            <div class="eyebrow">
+                <i class="fa-solid fa-sliders"></i>
+                PERSONALIZE
+            </div>
+
+            <h1>Settings</h1>
+
+            <p>
+                Make your study planner work your way.
+            </p>
+        </div>
+
+        <div class="funny-sticker">
+            ⚙️
+            <div>
+                <strong>Fine-tuning the grind</strong>
+                <span>Make studying less painful 😭</span>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- PROFILE -->
+
+    <section class="settings-card">
+
+        <div class="card-heading">
+
+            <div class="heading-icon blue">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div>
+                <h2>Profile</h2>
+                <p>Your study planner information</p>
+            </div>
+
+        </div>
+
+        <div class="profile-grid">
+
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" id="nameInput">
+            </div>
+
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" id="emailInput" disabled>
+            </div>
+
+            <div class="input-group">
+                <label>Course</label>
+
+                <select id="courseInput">
+                    <option value="">Select course</option>
+                    <option value="BSc Computer Science">BSc Computer Science</option>
+                    <option value="BSc IT">BSc IT</option>
+                    <option value="BCA">BCA</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STUDY -->
+
+    <section class="settings-card">
+
+        <div class="card-heading">
+
+            <div class="heading-icon purple">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+
+            <div>
+                <h2>Study Preferences</h2>
+                <p>Set your daily study target</p>
+            </div>
+
+        </div>
+
+        <div class="preference-row">
+
+            <div>
+                <strong>Daily Study Goal</strong>
+                <span>How long do you want to study each day?</span>
+            </div>
+
+            <select id="studyGoal">
+                <option value="60">1 hour</option>
+                <option value="120">2 hours</option>
+                <option value="180">3 hours</option>
+                <option value="240">4 hours</option>
+                <option value="300">5 hours</option>
+                <option value="360">6 hours</option>
+            </select>
+
+        </div>
+
+    </section>
+
+
+    <!-- POMODORO -->
+
+    <section class="settings-card">
+
+        <div class="card-heading">
+
+            <div class="heading-icon orange">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+
+            <div>
+                <h2>Pomodoro</h2>
+                <p>Customize your focus sessions</p>
+            </div>
+
+        </div>
+
+        <div class="preference-row">
+
+            <div>
+                <strong>Focus Duration</strong>
+                <span>Length of each deep-focus session</span>
+            </div>
+
+            <select id="focusDuration">
+                <option value="25">25 minutes</option>
+                <option value="30">30 minutes</option>
+                <option value="45">45 minutes</option>
+                <option value="50">50 minutes</option>
+                <option value="60">60 minutes</option>
+            </select>
+
+        </div>
+
+    </section>
+
+
+    <!-- NOTIFICATIONS -->
+
+    <section class="settings-card">
+
+        <div class="card-heading">
+
+            <div class="heading-icon green">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+
+            <div>
+                <h2>Notifications</h2>
+                <p>Control your study reminders</p>
+            </div>
+
+        </div>
+
+        <div class="toggle-row">
+
+            <div>
+                <strong>Study Reminders</strong>
+                <span>Remind me when it's time to study</span>
+            </div>
+
+            <label class="switch">
+                <input type="checkbox" id="notifications">
+                <span class="slider"></span>
+            </label>
+
+        </div>
+
+    </section>
+
+
+    <!-- SAVE -->
+
+    <div class="save-area">
+
+        <span id="saveMessage"></span>
+
+        <button id="saveBtn">
+            <i class="fa-solid fa-check"></i>
+            Save Changes
+        </button>
+
+    </div>
+
+
+    <footer>
+        AI Study Planner • Built for focused minds 🧠
+    </footer>
+
+</main>
+
+
+<script src="settings.js"></script>
+
+</body>
+</html>

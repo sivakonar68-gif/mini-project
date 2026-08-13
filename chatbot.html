@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Tutor | AI Study Planner</title>
+
+    <link rel="stylesheet" href="chatbot.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+
+            <span>AI Planner</span>
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="planner.html">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>Planner</span>
+            </a>
+
+            <a href="calendar.html">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Calendar</span>
+            </a>
+
+            <a href="chatbot.html" class="active">
+                <i class="fa-solid fa-robot"></i>
+                <span>AI Assistant</span>
+            </a>
+
+            <a href="analytics.html">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Analytics</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="login.html" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="topbar">
+
+            <div>
+                <h1>AI Tutor</h1>
+                <p>Your personal study assistant</p>
+            </div>
+
+            <div class="top-actions">
+
+                <div class="status">
+                    <span class="status-dot"></span>
+                    Online
+                </div>
+
+                <button class="clear-btn" id="clearChat">
+                    <i class="fa-solid fa-trash"></i>
+                    Clear
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- CHAT CONTAINER -->
+        <section class="chat-wrapper">
+
+            <div class="chat-header">
+
+                <div class="bot-avatar">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+
+                <div>
+                    <h2>AI Study Assistant</h2>
+                    <p>Ask me anything about your studies</p>
+                </div>
+
+            </div>
+
+
+            <!-- MESSAGES -->
+            <div class="messages" id="messages">
+
+                <div class="message bot">
+
+                    <div class="avatar">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+
+                    <div class="bubble">
+
+                        <strong>Hey! 👋</strong>
+
+                        <p>
+                            I'm your AI Study Assistant.
+                            I can help you understand topics,
+                            create quizzes, summarize notes and
+                            build study plans.
+                        </p>
+
+                        <p>
+                            What are you studying today?
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+            <div class="quick-section">
+
+                <div class="section-title">
+                    <i class="fa-solid fa-bolt"></i>
+                    Quick Actions
+                </div>
+
+                <div class="quick-actions">
+
+                    <button data-action="quiz">
+                        <i class="fa-solid fa-circle-question"></i>
+                        Generate Quiz
+                    </button>
+
+                    <button data-action="summary">
+                        <i class="fa-solid fa-file-lines"></i>
+                        Summarize Notes
+                    </button>
+
+                    <button data-action="flashcards">
+                        <i class="fa-solid fa-layer-group"></i>
+                        Flashcards
+                    </button>
+
+                    <button data-action="timetable">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        Study Timetable
+                    </button>
+
+                    <button data-action="explain">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        Explain Topic
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- INPUT -->
+            <div class="input-area">
+
+                <button class="icon-btn" id="uploadBtn"
+                        title="Upload notes">
+
+                    <i class="fa-solid fa-paperclip"></i>
+
+                </button>
+
+                <input type="file"
+                       id="fileInput"
+                       hidden
+                       accept=".txt,.md,.pdf">
+
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="Ask anything about your studies..."
+                    autocomplete="off"
+                >
+
+                <button class="icon-btn mic-btn"
+                        id="micBtn"
+                        title="Voice input">
+
+                    <i class="fa-solid fa-microphone"></i>
+
+                </button>
+
+                <button class="send-btn"
+                        id="sendBtn"
+                        title="Send">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                </button>
+
+            </div>
+
+            <div class="input-hint">
+                Press <b>Enter</b> to send
+            </div>
+
+        </section>
+
+
+        <!-- STUDY TOOLS -->
+        <section class="tools-grid">
+
+            <!-- QUIZ -->
+            <div class="tool-card">
+
+                <div class="tool-icon blue">
+                    <i class="fa-solid fa-circle-question"></i>
+                </div>
+
+                <div>
+                    <h3>AI Quiz Generator</h3>
+
+                    <p>
+                        Test your knowledge with automatically
+                        generated questions.
+                    </p>
+                </div>
+
+                <button onclick="quickAction('quiz')">
+                    Generate
+                </button>
+
+            </div>
+
+
+            <!-- FLASHCARDS -->
+            <div class="tool-card">
+
+                <div class="tool-icon cyan">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+
+                <div>
+                    <h3>Flashcards</h3>
+
+                    <p>
+                        Create quick revision cards for important concepts.
+                    </p>
+                </div>
+
+                <button onclick="quickAction('flashcards')">
+                    Create
+                </button>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="tool-card">
+
+                <div class="tool-icon purple">
+                    <i class="fa-solid fa-file-lines"></i>
+                </div>
+
+                <div>
+                    <h3>Notes Summary</h3>
+
+                    <p>
+                        Turn long notes into simple revision points.
+                    </p>
+                </div>
+
+                <button onclick="quickAction('summary')">
+                    Summarize
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="chatbot.js"></script>
+
+</body>
+</html>

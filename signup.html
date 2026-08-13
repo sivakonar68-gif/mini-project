@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | AI Study Planner</title>
+
+    <link rel="stylesheet" href="signup.css">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <main class="signup-page">
+
+        <!-- LEFT SIDE -->
+        <section class="signup-info">
+
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <span>AI Study Planner</span>
+            </div>
+
+            <div class="info-content">
+
+                <p class="eyebrow">
+                    <i class="fa-solid fa-sparkles"></i>
+                    START YOUR JOURNEY
+                </p>
+
+                <h1>
+                    Your studies.<br>
+                    <span>Organized.</span>
+                </h1>
+
+                <p class="description">
+                    Create your account and bring your exams,
+                    assignments and study goals into one intelligent
+                    workspace.
+                </p>
+
+                <div class="features">
+
+                    <div class="feature">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                        <div>
+                            <strong>Personalized Planning</strong>
+                            <p>Build study schedules around your goals.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <i class="fa-solid fa-chart-line"></i>
+
+                        <div>
+                            <strong>Progress Analytics</strong>
+                            <p>Understand your learning performance.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <i class="fa-solid fa-fire"></i>
+
+                        <div>
+                            <strong>Stay Consistent</strong>
+                            <p>Build productive study streaks.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p class="copyright">
+                © 2026 AI Study Planner
+            </p>
+
+        </section>
+
+
+        <!-- RIGHT SIDE -->
+        <section class="signup-section">
+
+            <div class="signup-card">
+
+                <div class="mobile-brand">
+
+                    <div class="brand-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+
+                    <span>AI Study Planner</span>
+
+                </div>
+
+
+                <div class="signup-heading">
+
+                    <h2>Create account</h2>
+
+                    <p>
+                        Start organizing your academic journey.
+                    </p>
+
+                </div>
+
+
+                <form id="signupForm">
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full name
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-user"></i>
+
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+                        <small class="error" id="nameError"></small>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email address
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                        <small class="error" id="emailError"></small>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Create a password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="togglePassword"
+                            >
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+
+                        </div>
+
+                        <div class="password-strength">
+
+                            <div class="strength-bar">
+                                <span id="strengthBar"></span>
+                            </div>
+
+                            <small id="strengthText">
+                                Use at least 8 characters
+                            </small>
+
+                        </div>
+
+                        <small class="error" id="passwordError"></small>
+
+                    </div>
+
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-shield-halved"></i>
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                placeholder="Confirm your password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="toggleConfirmPassword"
+                            >
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="error"
+                            id="confirmPasswordError">
+                        </small>
+
+                    </div>
+
+
+                    <!-- TERMS -->
+
+                    <label class="terms">
+
+                        <input
+                            type="checkbox"
+                            id="terms"
+                            required
+                        >
+
+                        <span>
+                            I agree to the
+                            <a href="#">Terms of Service</a>
+                            and
+                            <a href="#">Privacy Policy</a>.
+                        </span>
+
+                    </label>
+
+                    <small class="error" id="termsError"></small>
+
+
+                    <!-- CREATE ACCOUNT -->
+
+                    <button
+                        type="submit"
+                        class="signup-button"
+                        id="signupButton"
+                    >
+
+                        <span>Create account</span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+
+                    <!-- LOGIN -->
+
+                    <p class="login-text">
+
+                        Already have an account?
+
+                        <a href="login.html">
+                            Login
+                        </a>
+
+                    </p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="signup.js"></script>
+
+</body>
+</html>

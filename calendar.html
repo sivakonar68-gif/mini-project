@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Calendar | AI Study Planner</title>
+
+    <link rel="stylesheet" href="calendar.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+        <div class="brand-icon">
+            <i class="fas fa-graduation-cap"></i>
+        </div>
+
+        <span>AI Planner</span>
+    </div>
+
+    <nav>
+
+        <a href="dashboard.html">
+            <i class="fas fa-home"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="planner.html">
+            <i class="fas fa-calendar-check"></i>
+            <span>Planner</span>
+        </a>
+
+        <a href="calendar.html" class="active">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Smart Calendar</span>
+        </a>
+
+        <a href="chatbot.html">
+            <i class="fas fa-robot"></i>
+            <span>AI Assistant</span>
+        </a>
+
+        <a href="analytics.html">
+            <i class="fas fa-chart-line"></i>
+            <span>Analytics</span>
+        </a>
+
+        <a href="index.html" class="logout">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+        </a>
+
+    </nav>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <div>
+            <p class="eyebrow">YOUR ACADEMIC COMMAND CENTER</p>
+
+            <h1>Smart Calendar</h1>
+
+            <p class="subtitle">
+                Keep track of classes, exams, assignments and study sessions.
+            </p>
+        </div>
+
+        <div class="live-info">
+
+            <div id="liveDate"></div>
+
+            <div id="liveClock">
+                00:00:00
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- QUICK STATS -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+            <div class="stat-icon blue">
+                <i class="fas fa-calendar-day"></i>
+            </div>
+
+            <div>
+                <span>Today's Events</span>
+                <strong id="todayCount">0</strong>
+            </div>
+        </div>
+
+
+        <div class="stat-card">
+            <div class="stat-icon purple">
+                <i class="fas fa-tasks"></i>
+            </div>
+
+            <div>
+                <span>Pending Tasks</span>
+                <strong id="pendingCount">0</strong>
+            </div>
+        </div>
+
+
+        <div class="stat-card">
+            <div class="stat-icon yellow">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+
+            <div>
+                <span>High Priority</span>
+                <strong id="priorityCount">0</strong>
+            </div>
+        </div>
+
+
+        <div class="stat-card">
+            <div class="stat-icon green">
+                <i class="fas fa-check-circle"></i>
+            </div>
+
+            <div>
+                <span>Completed</span>
+                <strong id="completedCount">0</strong>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- CONTENT GRID -->
+
+    <section class="calendar-layout">
+
+
+        <!-- CALENDAR -->
+
+        <div class="calendar-card">
+
+            <div class="calendar-header">
+
+                <button id="prevMonth" class="month-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div>
+                    <h2 id="monthTitle">August 2026</h2>
+                    <p id="selectedDateText">Select a date</p>
+                </div>
+
+                <button id="nextMonth" class="month-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+            </div>
+
+
+            <div class="weekdays">
+
+                <span>MON</span>
+                <span>TUE</span>
+                <span>WED</span>
+                <span>THU</span>
+                <span>FRI</span>
+                <span>SAT</span>
+                <span>SUN</span>
+
+            </div>
+
+
+            <div id="calendarGrid" class="calendar-grid"></div>
+
+        </div>
+
+
+        <!-- RIGHT PANEL -->
+
+        <div class="side-panel">
+
+
+            <!-- ADD EVENT -->
+
+            <div class="add-card">
+
+                <div class="card-title">
+
+                    <div class="title-icon">
+                        <i class="fas fa-plus"></i>
+                    </div>
+
+                    <div>
+                        <h2>Add Event</h2>
+                        <p>Create something for your schedule</p>
+                    </div>
+
+                </div>
+
+
+                <form id="eventForm">
+
+                    <label>Event Name</label>
+
+                    <input
+                        type="text"
+                        id="eventTitle"
+                        placeholder="e.g. DBMS Unit 4 Revision"
+                        required
+                    >
+
+
+                    <div class="form-row">
+
+                        <div>
+                            <label>Date</label>
+
+                            <input
+                                type="date"
+                                id="eventDate"
+                                required
+                            >
+                        </div>
+
+
+                        <div>
+                            <label>Type</label>
+
+                            <select id="eventType">
+
+                                <option value="study">
+                                    📚 Study
+                                </option>
+
+                                <option value="exam">
+                                    📝 Exam
+                                </option>
+
+                                <option value="assignment">
+                                    📌 Assignment
+                                </option>
+
+                                <option value="class">
+                                    🎓 Class
+                                </option>
+
+                                <option value="personal">
+                                    👤 Personal
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div>
+
+                            <label>Start Time</label>
+
+                            <input
+                                type="time"
+                                id="eventStart"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div>
+
+                            <label>End Time</label>
+
+                            <input
+                                type="time"
+                                id="eventEnd"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <label>Priority</label>
+
+                    <select id="eventPriority">
+
+                        <option value="low">
+                            Low
+                        </option>
+
+                        <option value="medium">
+                            Medium
+                        </option>
+
+                        <option value="high">
+                            High
+                        </option>
+
+                    </select>
+
+
+                    <label>Notes</label>
+
+                    <textarea
+                        id="eventNotes"
+                        placeholder="Add important notes..."
+                    ></textarea>
+
+
+                    <button type="submit" class="add-event-btn">
+
+                        <i class="fas fa-plus"></i>
+
+                        Add To Calendar
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- UPCOMING -->
+
+            <div class="upcoming-card">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Upcoming</h2>
+
+                        <p>Your next scheduled events</p>
+                    </div>
+
+                    <i class="fas fa-clock"></i>
+
+                </div>
+
+
+                <div id="upcomingList" class="upcoming-list">
+
+                    <div class="empty-state">
+                        <i class="fas fa-calendar-plus"></i>
+                        <p>No upcoming events</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SELECTED DAY -->
+
+    <section class="day-section">
+
+        <div class="day-header">
+
+            <div>
+
+                <p class="eyebrow">DAILY SCHEDULE</p>
+
+                <h2 id="dayTitle">
+                    Today's Schedule
+                </h2>
+
+            </div>
+
+            <span id="eventNumber">
+                0 events
+            </span>
+
+        </div>
+
+
+        <div id="dayEvents" class="day-events">
+
+            <div class="empty-day">
+
+                <i class="fas fa-calendar-check"></i>
+
+                <h3>Your day is clear</h3>
+
+                <p>
+                    Add a study session, assignment, class or exam.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="calendar.js"></script>
+
+</body>
+</html>

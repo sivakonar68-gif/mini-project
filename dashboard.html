@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard | AI Study Planner</title>
+
+
+    <!-- Google Font -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- Dashboard CSS -->
+    <link
+        rel="stylesheet"
+        href="dashboard.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     SIDEBAR
+=================================================== -->
+
+<aside class="sidebar">
+
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+        <i class="fa-solid fa-brain"></i>
+
+        <span>
+            StudyFlow
+        </span>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <a
+            href="dashboard.html"
+            class="active"
+        >
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>
+                Dashboard
+            </span>
+
+        </a>
+
+
+        <a
+            href="planner.html"
+        >
+
+            <i class="fa-solid fa-calendar-days"></i>
+
+            <span>
+                Planner
+            </span>
+
+        </a>
+
+
+        <a
+            href="pomodoro.html"
+        >
+
+            <i class="fa-solid fa-stopwatch"></i>
+
+            <span>
+                Deep Focus
+            </span>
+
+        </a>
+
+
+        <a
+            href="analytics.html"
+        >
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            <span>
+                Analytics
+            </span>
+
+        </a>
+
+
+        <a
+            href="calendar.html"
+        >
+
+            <i class="fa-solid fa-calendar"></i>
+
+            <span>
+                Smart Calendar
+            </span>
+
+        </a>
+
+
+        <a
+            href="ai-tutor.html"
+        >
+
+            <i class="fa-solid fa-robot"></i>
+
+            <span>
+                AI Tutor
+            </span>
+
+        </a>
+
+    </nav>
+
+
+</aside>
+
+
+
+<!-- ==================================================
+     MAIN CONTENT
+=================================================== -->
+
+<main class="main-content">
+
+
+    <!-- ==================================================
+         TOP BAR
+    =================================================== -->
+
+    <div class="topbar">
+
+
+        <div class="welcome">
+
+            <h1 id="greeting">
+                Good afternoon 👋
+            </h1>
+
+            <p id="todayDate">
+                Loading...
+            </p>
+
+        </div>
+
+
+        <!-- USER -->
+
+        <div class="user-profile">
+
+            <div class="user-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <span>
+                Student
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ==================================================
+         BACK BUTTON
+    =================================================== -->
+
+    <button
+        class="back-btn"
+        onclick="history.back()"
+    >
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Back
+
+    </button>
+
+
+
+    <!-- ==================================================
+         STATISTICS
+    =================================================== -->
+
+    <section class="stats-grid">
+
+
+        <!-- FOCUS -->
+
+        <div class="stat-card">
+
+            <i class="fa-solid fa-bolt"></i>
+
+            <h3>
+                <span id="focusMinutes">
+                    0
+                </span>
+                <small>min</small>
+            </h3>
+
+            <p>
+                Today's Focus
+            </p>
+
+        </div>
+
+
+        <!-- STREAK -->
+
+        <div class="stat-card">
+
+            <i class="fa-solid fa-fire"></i>
+
+            <h3 id="streak">
+                0
+            </h3>
+
+            <p>
+                Day Streak
+            </p>
+
+        </div>
+
+
+        <!-- XP -->
+
+        <div class="stat-card">
+
+            <i class="fa-solid fa-star"></i>
+
+            <h3 id="xp">
+                0
+            </h3>
+
+            <p>
+                Study XP
+            </p>
+
+        </div>
+
+
+        <!-- TASKS -->
+
+        <div class="stat-card">
+
+            <i class="fa-solid fa-list-check"></i>
+
+            <h3 id="tasksDone">
+                0
+            </h3>
+
+            <p>
+                Tasks Completed
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==================================================
+         MAIN GRID
+    =================================================== -->
+
+    <section class="dashboard-grid">
+
+
+        <!-- ==================================================
+             LEFT COLUMN
+        =================================================== -->
+
+        <div>
+
+
+            <!-- TODAY'S TASKS -->
+
+            <section class="card">
+
+                <div class="card-header">
+
+                    <h2>
+                        Today's Tasks
+                    </h2>
+
+                    <span>
+                        From Planner
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="task-list"
+                    id="taskList"
+                >
+
+                    <div class="empty-state">
+
+                        <i
+                            class="fa-solid fa-spinner fa-spin"
+                        ></i>
+
+                        <strong>
+                            Loading tasks...
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- SUBJECT BREAKDOWN -->
+
+            <section
+                class="card"
+                style="margin-top:16px;"
+            >
+
+                <div class="card-header">
+
+                    <h2>
+                        Today's Subjects
+                    </h2>
+
+                    <span>
+                        Study time
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="subject-list"
+                    id="subjectList"
+                >
+
+                    <div class="empty-state">
+
+                        <i
+                            class="fa-solid fa-book"
+                        ></i>
+
+                        <strong>
+                            No study subject yet
+                        </strong>
+
+                        <span>
+                            Start a focus session.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- MOTIVATION -->
+
+            <section
+                class="motivation-card"
+                style="margin-top:16px;"
+            >
+
+                <h3>
+                    🗿 LOCK IN BRO.
+                </h3>
+
+                <p id="motivation">
+                    Your future GPA just entered
+                    the room. 👀
+                </p>
+
+
+                <button
+                    class="primary-btn"
+                    id="newMotivation"
+                    style="margin-top:15px;"
+                >
+
+                    <i
+                        class="fa-solid fa-shuffle"
+                    ></i>
+
+                    Give me another
+
+                </button>
+
+            </section>
+
+
+        </div>
+
+
+
+        <!-- ==================================================
+             RIGHT COLUMN
+        =================================================== -->
+
+        <div>
+
+
+            <!-- DAILY GOAL -->
+
+            <section class="card">
+
+                <div class="card-header">
+
+                    <h2>
+                        Daily Focus Goal
+                    </h2>
+
+                    <span>
+                        120 min
+                    </span>
+
+                </div>
+
+
+                <div class="goal-card">
+
+
+                    <div class="goal-circle">
+
+                        <div>
+
+                            <div
+                                id="goalPercent"
+                            >
+                                0%
+                            </div>
+
+                            <div
+                                id="goalCurrent"
+                            >
+                                0 min
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <p
+                        id="goalMessage"
+                        style="
+                            text-align:center;
+                            color:var(--muted);
+                            font-size:10px;
+                        "
+                    >
+                        Let's get started. 🗿
+                    </p>
+
+
+                    <div
+                        class="progress-row"
+                        style="margin-top:20px;"
+                    >
+
+                        <div
+                            class="progress-label"
+                        >
+
+                            <span>
+                                Progress
+                            </span>
+
+                            <span>
+                                120 min
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="progress-track"
+                        >
+
+                            <div
+                                class="progress-fill"
+                                id="goalBar"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- PRODUCTIVITY -->
+
+            <section
+                class="card"
+                style="margin-top:16px;"
+            >
+
+                <div class="card-header">
+
+                    <h2>
+                        Productivity
+                    </h2>
+
+                    <span>
+                        Today
+                    </span>
+
+                </div>
+
+
+                <div class="goal-card">
+
+                    <div
+                        class="productivity-score"
+                        id="productivityScore"
+                    >
+                        0%
+                    </div>
+
+
+                    <!-- FOCUS -->
+
+                    <div
+                        class="progress-row"
+                    >
+
+                        <div
+                            class="progress-label"
+                        >
+
+                            <span>
+                                Focus
+                            </span>
+
+                            <span
+                                id="focusBarText"
+                            >
+                                0%
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="progress-track"
+                        >
+
+                            <div
+                                class="progress-fill"
+                                id="focusBar"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TASKS -->
+
+                    <div
+                        class="progress-row"
+                    >
+
+                        <div
+                            class="progress-label"
+                        >
+
+                            <span>
+                                Tasks
+                            </span>
+
+                            <span
+                                id="taskBarText"
+                            >
+                                0%
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="progress-track"
+                        >
+
+                            <div
+                                class="progress-fill"
+                                id="taskBar"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STREAK -->
+
+                    <div
+                        class="progress-row"
+                    >
+
+                        <div
+                            class="progress-label"
+                        >
+
+                            <span>
+                                Streak
+                            </span>
+
+                            <span
+                                id="streakBarText"
+                            >
+                                0%
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="progress-track"
+                        >
+
+                            <div
+                                class="progress-fill"
+                                id="streakBar"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- QUICK ACTIONS -->
+
+            <section
+                class="card"
+                style="margin-top:16px;"
+            >
+
+                <div class="card-header">
+
+                    <h2>
+                        Quick Actions
+                    </h2>
+
+                    <span>
+                        Jump in
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="quick-actions"
+                    style="padding:15px;"
+                >
+
+
+                    <button
+                        class="action-card"
+                        data-action="pomodoro"
+                    >
+
+                        <i
+                            class="fa-solid fa-stopwatch"
+                        ></i>
+
+                        <span>
+                            Deep Focus
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="action-card"
+                        data-action="planner"
+                    >
+
+                        <i
+                            class="fa-solid fa-calendar-plus"
+                        ></i>
+
+                        <span>
+                            Add Task
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="action-card"
+                        data-action="calendar"
+                    >
+
+                        <i
+                            class="fa-solid fa-calendar-days"
+                        ></i>
+
+                        <span>
+                            Calendar
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="action-card"
+                        data-action="tutor"
+                    >
+
+                        <i
+                            class="fa-solid fa-robot"
+                        ></i>
+
+                        <span>
+                            AI Tutor
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==================================================
+         NEXT STEP
+    =================================================== -->
+
+    <section
+        class="motivation-card"
+        style="margin-top:16px;"
+    >
+
+        <h3>
+            What's next?
+        </h3>
+
+        <p id="nextStep">
+            Start your first Pomodoro.
+        </p>
+
+
+        <button
+            class="primary-btn"
+            id="nextButton"
+            style="margin-top:14px;"
+        >
+
+            Let's go
+            <i
+                class="fa-solid fa-arrow-right"
+            ></i>
+
+        </button>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- ==================================================
+     DASHBOARD JS
+=================================================== -->
+
+<script src="dashboard.js"></script>
+
+
+</body>
+
+</html>

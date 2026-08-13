@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Tutor | StudyFlow</title>
+
+
+    <!-- FONT -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- ICONS -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- DASHBOARD STYLE -->
+
+    <link
+        rel="stylesheet"
+        href="dashboard.css"
+    >
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            overflow: hidden;
+        }
+
+
+        /* =========================================
+           PAGE
+        ========================================= */
+
+        .ai-page {
+
+            height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+
+            padding: 24px 28px;
+
+            overflow: hidden;
+        }
+
+
+        /* =========================================
+           TOP
+        ========================================= */
+
+        .ai-top {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 18px;
+        }
+
+
+        .ai-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .ai-icon {
+
+            width: 42px;
+            height: 42px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f8fff,
+                    #7564ff
+                );
+
+            color: white;
+
+            font-size: 17px;
+
+            box-shadow:
+                0 8px 25px
+                rgba(79,143,255,.2);
+        }
+
+
+        .ai-title h1 {
+
+            font-size: 20px;
+
+            font-weight: 700;
+        }
+
+
+        .ai-title p {
+
+            margin-top: 2px;
+
+            color: #71839c;
+
+            font-size: 9px;
+        }
+
+
+        .online {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            padding: 7px 10px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(72,213,151,.08);
+
+            color: #48d597;
+
+            font-size: 8px;
+
+            font-weight: 700;
+
+            letter-spacing: .7px;
+        }
+
+
+        .online-dot {
+
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: #48d597;
+
+            box-shadow:
+                0 0 8px #48d597;
+        }
+
+
+        /* =========================================
+           CHAT WRAPPER
+        ========================================= */
+
+        .ai-wrapper {
+
+            flex: 1;
+
+            min-height: 0;
+
+            display: grid;
+
+            grid-template-columns:
+                210px 1fr;
+
+            gap: 15px;
+        }
+
+
+        /* =========================================
+           QUICK ACTIONS
+        ========================================= */
+
+        .quick-panel {
+
+            padding: 15px;
+
+            border-radius: 17px;
+
+            background: #0d1422;
+
+            border:
+                1px solid
+                rgba(255,255,255,.06);
+        }
+
+
+        .quick-panel h3 {
+
+            font-size: 10px;
+
+            color: #dbe5f2;
+
+            margin-bottom: 4px;
+        }
+
+
+        .quick-panel > p {
+
+            color: #64758d;
+
+            font-size: 8px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .quick-btn {
+
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding: 10px;
+
+            margin-bottom: 7px;
+
+            border-radius: 10px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.05);
+
+            background:
+                rgba(255,255,255,.025);
+
+            color: #8fa1b8;
+
+            cursor: pointer;
+
+            text-align: left;
+
+            font-family: inherit;
+
+            font-size: 8px;
+
+            transition: .2s;
+        }
+
+
+        .quick-btn i {
+
+            width: 18px;
+
+            text-align: center;
+
+            color: #719fff;
+        }
+
+
+        .quick-btn:hover {
+
+            transform: translateX(3px);
+
+            color: white;
+
+            background:
+                rgba(79,143,255,.09);
+
+            border-color:
+                rgba(79,143,255,.2);
+        }
+
+
+        /* =========================================
+           CHAT
+        ========================================= */
+
+        .chat-container {
+
+            min-width: 0;
+
+            min-height: 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            overflow: hidden;
+
+            border-radius: 19px;
+
+            background: #0d1422;
+
+            border:
+                1px solid
+                rgba(255,255,255,.06);
+
+            box-shadow:
+                0 20px 60px
+                rgba(0,0,0,.18);
+        }
+
+
+        /* =========================================
+           CHAT HEADER
+        ========================================= */
+
+        .chat-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 15px 18px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.05);
+        }
+
+
+        .chat-user {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+
+        .bot-avatar {
+
+            width: 34px;
+            height: 34px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 11px;
+
+            background:
+                rgba(79,143,255,.1);
+
+            color: #78aaff;
+
+            font-size: 14px;
+        }
+
+
+        .chat-user h2 {
+
+            font-size: 11px;
+        }
+
+
+        .chat-user p {
+
+            color: #65768e;
+
+            font-size: 8px;
+
+            margin-top: 2px;
+        }
+
+
+        #clearChat {
+
+            padding: 7px 9px;
+
+            border-radius: 8px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.06);
+
+            background:
+                rgba(255,255,255,.025);
+
+            color: #687a92;
+
+            cursor: pointer;
+
+            font-family: inherit;
+
+            font-size: 8px;
+        }
+
+
+        #clearChat:hover {
+
+            color: #ff7f8a;
+
+            border-color:
+                rgba(255,100,110,.2);
+        }
+
+
+        /* =========================================
+           MESSAGES
+        ========================================= */
+
+        .chat-box {
+
+            flex: 1;
+
+            min-height: 0;
+
+            overflow-y: auto;
+
+            padding: 20px;
+        }
+
+
+        .chat-box::-webkit-scrollbar {
+
+            width: 4px;
+        }
+
+
+        .chat-box::-webkit-scrollbar-thumb {
+
+            background:
+                rgba(255,255,255,.08);
+
+            border-radius: 10px;
+        }
+
+
+        .welcome {
+
+            height: 100%;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+        }
+
+
+        .welcome-icon {
+
+            width: 60px;
+            height: 60px;
+
+            display: grid;
+
+            place-items: center;
+
+            margin-bottom: 13px;
+
+            border-radius: 18px;
+
+            background:
+                rgba(79,143,255,.08);
+
+            font-size: 27px;
+        }
+
+
+        .welcome h2 {
+
+            color: #e5edf8;
+
+            font-size: 17px;
+        }
+
+
+        .welcome p {
+
+            max-width: 380px;
+
+            margin-top: 6px;
+
+            color: #65768e;
+
+            font-size: 9px;
+
+            line-height: 1.7;
+        }
+
+
+        /* JS GENERATED MESSAGES */
+
+        .chat-message {
+
+            display: flex;
+
+            gap: 9px;
+
+            max-width: 82%;
+
+            margin-bottom: 17px;
+        }
+
+
+        .chat-message.user {
+
+            margin-left: auto;
+
+            flex-direction: row-reverse;
+        }
+
+
+        .message-avatar {
+
+            width: 28px;
+            height: 28px;
+
+            flex-shrink: 0;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 9px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f8fff,
+                    #7564ff
+                );
+
+            color: white;
+
+            font-size: 6px;
+
+            font-weight: 700;
+        }
+
+
+        .chat-message.assistant
+        .message-avatar {
+
+            background:
+                rgba(72,213,151,.08);
+
+            color: #48d597;
+        }
+
+
+        .message-content {
+
+            padding: 10px 13px;
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,.035);
+
+            color: #b8c6d7;
+
+            font-size: 10px;
+
+            line-height: 1.7;
+
+            white-space: pre-wrap;
+        }
+
+
+        .chat-message.user
+        .message-content {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(79,143,255,.17),
+                    rgba(117,100,255,.13)
+                );
+
+            color: #e8f0fc;
+        }
+
+
+        /* =========================================
+           INPUT
+        ========================================= */
+
+        .chat-input-area {
+
+            display: flex;
+
+            align-items: flex-end;
+
+            gap: 9px;
+
+            padding: 13px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.05);
+        }
+
+
+        #question {
+
+            flex: 1;
+
+            min-width: 0;
+
+            min-height: 43px;
+
+            max-height: 110px;
+
+            resize: none;
+
+            padding: 12px 13px;
+
+            border-radius: 11px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.07);
+
+            outline: none;
+
+            background: #080f1b;
+
+            color: #e9f0f8;
+
+            font-family: inherit;
+
+            font-size: 10px;
+        }
+
+
+        #question::placeholder {
+
+            color: #53657d;
+        }
+
+
+        #question:focus {
+
+            border-color:
+                rgba(79,143,255,.3);
+        }
+
+
+        .send-button {
+
+            width: 43px;
+            height: 43px;
+
+            flex-shrink: 0;
+
+            display: grid;
+
+            place-items: center;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f8fff,
+                    #7564ff
+                );
+
+            color: white;
+
+            cursor: pointer;
+
+            transition: .2s;
+        }
+
+
+        .send-button:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 22px
+                rgba(79,143,255,.2);
+        }
+
+
+        .send-button:disabled {
+
+            opacity: .5;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 800px) {
+
+            .ai-page {
+
+                padding: 15px;
+            }
+
+            .ai-wrapper {
+
+                grid-template-columns: 1fr;
+            }
+
+            .quick-panel {
+
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     SIDEBAR
+========================================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-brain"></i>
+
+        <span>
+            StudyFlow
+        </span>
+
+    </div>
+
+
+    <nav>
+
+        <a href="dashboard.html">
+
+            <i class="fa-solid fa-house"></i>
+
+            Dashboard
+
+        </a>
+
+
+        <a href="planner.html">
+
+            <i class="fa-solid fa-calendar-days"></i>
+
+            Planner
+
+        </a>
+
+
+        <a href="pomodoro.html">
+
+            <i class="fa-solid fa-stopwatch"></i>
+
+            Deep Focus
+
+        </a>
+
+
+        <a href="analytics.html">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            Analytics
+
+        </a>
+
+
+        <a href="calendar.html">
+
+            <i class="fa-solid fa-calendar"></i>
+
+            Smart Calendar
+
+        </a>
+
+
+        <a
+            href="ai-tutor.html"
+            class="active"
+        >
+
+            <i class="fa-solid fa-robot"></i>
+
+            AI Tutor
+
+        </a>
+
+    </nav>
+
+</aside>
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main class="main-content">
+
+
+    <div class="ai-page">
+
+
+        <!-- TOP -->
+
+        <div class="ai-top">
+
+            <div class="ai-title">
+
+                <div class="ai-icon">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                </div>
+
+                <div>
+
+                    <h1>
+                        AI Tutor
+                    </h1>
+
+                    <p>
+                        Your personal study assistant — ask anything.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="online">
+
+                <span class="online-dot"></span>
+
+                AI ONLINE
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CONTENT -->
+
+        <div class="ai-wrapper">
+
+
+            <!-- QUICK PANEL -->
+
+            <aside class="quick-panel">
+
+                <h3>
+                    Quick Actions
+                </h3>
+
+                <p>
+                    Start with one tap
+                </p>
+
+
+                <button
+                    class="quick-btn"
+                    onclick="askTutor('explain')"
+                >
+
+                    <i class="fa-solid fa-lightbulb"></i>
+
+                    Explain a topic
+
+                </button>
+
+
+                <button
+                    class="quick-btn"
+                    onclick="askTutor('quiz')"
+                >
+
+                    <i class="fa-solid fa-circle-question"></i>
+
+                    Generate a quiz
+
+                </button>
+
+
+                <button
+                    class="quick-btn"
+                    onclick="askTutor('summary')"
+                >
+
+                    <i class="fa-solid fa-file-lines"></i>
+
+                    Summarize notes
+
+                </button>
+
+
+                <button
+                    class="quick-btn"
+                    onclick="askTutor('flashcards')"
+                >
+
+                    <i class="fa-solid fa-layer-group"></i>
+
+                    Make flashcards
+
+                </button>
+
+
+                <button
+                    class="quick-btn"
+                    onclick="askTutor('plan')"
+                >
+
+                    <i class="fa-solid fa-calendar-check"></i>
+
+                    Make a study plan
+
+                </button>
+
+            </aside>
+
+
+
+            <!-- CHAT -->
+
+            <section class="chat-container">
+
+
+                <!-- CHAT HEADER -->
+
+                <header class="chat-header">
+
+                    <div class="chat-user">
+
+                        <div class="bot-avatar">
+
+                            <i class="fa-solid fa-robot"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                StudyFlow AI
+                            </h2>
+
+                            <p>
+                                Ask anything
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        id="clearChat"
+                        type="button"
+                    >
+
+                        <i class="fa-solid fa-trash"></i>
+
+                        Clear
+
+                    </button>
+
+                </header>
+
+
+
+                <!-- MESSAGES -->
+
+                <div
+                    class="chat-box"
+                    id="chatBox"
+                >
+
+                    <div class="welcome">
+
+                        <div class="welcome-icon">
+                            🤖
+                        </div>
+
+                        <h2>
+                            What's on your mind?
+                        </h2>
+
+                        <p>
+                            Ask about coding, maths, science,
+                            college, writing, general knowledge,
+                            or literally anything you're curious about.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- INPUT -->
+
+                <div class="chat-input-area">
+
+                    <textarea
+                        id="question"
+                        placeholder="Message your AI Tutor..."
+                        rows="1"
+                    ></textarea>
+
+
+                    <button
+                        id="sendButton"
+                        class="send-button"
+                        type="button"
+                        title="Send message"
+                    >
+
+                        <i class="fa-solid fa-paper-plane"></i>
+
+                    </button>
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+<!-- =========================================
+     AI TUTOR JS
+========================================= -->
+
+<script src="ai-tutor.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Analytics | AI Study Planner</title>
+
+    <link rel="stylesheet" href="analytics.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-brain"></i>
+            </div>
+
+            <span>AI Study Planner</span>
+        </div>
+
+        <div class="menu-title">MAIN</div>
+
+        <nav>
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-grid-2"></i>
+                Dashboard
+            </a>
+
+            <a href="planner.html">
+                <i class="fa-solid fa-calendar-days"></i>
+                Planner
+            </a>
+
+            <a href="pomodoro.html">
+                <i class="fa-solid fa-clock"></i>
+                Pomodoro
+            </a>
+
+            <a href="analytics.html" class="active">
+                <i class="fa-solid fa-chart-line"></i>
+                Analytics
+            </a>
+
+        </nav>
+
+        <div class="menu-title">ACCOUNT</div>
+
+        <div class="sidebar-bottom">
+
+            <a href="settings.html">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+
+            <a href="index.html">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div>
+                <span class="eyebrow">PERFORMANCE CENTER</span>
+
+                <h1>Analytics</h1>
+
+                <p>
+                    Your study performance, calculated from real activity.
+                </p>
+            </div>
+
+            <div class="profile">
+
+                <div class="avatar">SK</div>
+
+                <div>
+                    <strong>Student</strong>
+                    <small>BSc Computer Science</small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- LIVE INDICATOR -->
+
+        <div class="live-status">
+
+            <span class="live-dot"></span>
+
+            <span>Live data</span>
+
+            <span id="lastUpdated">
+                Updated just now
+            </span>
+
+        </div>
+
+
+        <!-- EMPTY STATE -->
+
+        <div id="analyticsEmpty" class="empty-state">
+
+            <div class="empty-icon">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+
+            <h2>No study data yet</h2>
+
+            <p>
+                Complete a Planner task or Pomodoro session
+                and your analytics will appear here.
+            </p>
+
+            <a href="pomodoro.html" class="empty-button">
+                <i class="fa-solid fa-play"></i>
+                Start Studying
+            </a>
+
+        </div>
+
+
+        <!-- STAT CARDS -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+
+                <div>
+                    <span>TOTAL STUDY</span>
+
+                    <strong id="totalStudy">
+                        0h 0m
+                    </strong>
+
+                    <small>
+                        All recorded study sessions
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    <i class="fa-solid fa-calendar-day"></i>
+                </div>
+
+                <div>
+                    <span>TODAY</span>
+
+                    <strong id="todayStudy">
+                        0m
+                    </strong>
+
+                    <small>
+                        Study completed today
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    <i class="fa-solid fa-fire"></i>
+                </div>
+
+                <div>
+                    <span>STUDY STREAK</span>
+
+                    <strong id="studyStreak">
+                        0 Days
+                    </strong>
+
+                    <small>
+                        Consecutive study days
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+
+                <div>
+                    <span>PRODUCTIVITY</span>
+
+                    <strong id="productivityScore">
+                        0%
+                    </strong>
+
+                    <small>
+                        Today's task completion
+                    </small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CHARTS -->
+
+        <section class="chart-grid">
+
+            <div class="analytics-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <span class="card-label">
+                            LAST 7 DAYS
+                        </span>
+
+                        <h2>
+                            Weekly Study Hours
+                        </h2>
+                    </div>
+
+                    <div class="card-icon blue">
+                        <i class="fa-solid fa-chart-column"></i>
+                    </div>
+
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="weeklyStudyChart"></canvas>
+                </div>
+
+            </div>
+
+
+            <div class="analytics-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <span class="card-label">
+                            SUBJECT BREAKDOWN
+                        </span>
+
+                        <h2>
+                            Subject-wise Study Time
+                        </h2>
+                    </div>
+
+                    <div class="card-icon purple">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+
+                </div>
+
+                <div class="chart-container doughnut">
+                    <canvas id="subjectStudyChart"></canvas>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- WEEKLY HIGHLIGHT -->
+
+        <div class="highlight-card">
+
+            <div class="highlight-icon">
+                <i class="fa-solid fa-calendar-week"></i>
+            </div>
+
+            <div>
+                <span>THIS WEEK</span>
+
+                <strong id="weeklyStudy">
+                    0h 0m
+                </strong>
+            </div>
+
+            <p>
+                Total recorded study time during the last 7 days.
+            </p>
+
+        </div>
+
+
+        <!-- SUBJECT PERFORMANCE -->
+
+        <section class="analytics-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="card-label">
+                        SUBJECT PERFORMANCE
+                    </span>
+
+                    <h2>
+                        <i class="fa-solid fa-table"></i>
+                        Study Breakdown
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table class="performance-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Subject</th>
+                            <th>Study Time</th>
+                            <th>Sessions</th>
+                            <th>Status</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="subjectTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOWER GRID -->
+
+        <section class="lower-grid">
+
+
+            <!-- AI INSIGHTS -->
+
+            <div class="analytics-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="card-label">
+                            INTELLIGENT ANALYSIS
+                        </span>
+
+                        <h2>
+                            <i class="fa-solid fa-robot"></i>
+                            AI Insights
+                        </h2>
+
+                    </div>
+
+                    <div class="card-icon blue">
+                        <i class="fa-solid fa-sparkles"></i>
+                    </div>
+
+                </div>
+
+
+                <div id="aiInsights" class="insight">
+
+                </div>
+
+            </div>
+
+
+            <!-- SESSIONS -->
+
+            <div class="analytics-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="card-label">
+                            ACTIVITY
+                        </span>
+
+                        <h2>
+                            <i class="fa-solid fa-list-check"></i>
+                            Sessions
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="big-metric">
+
+                    <strong id="completedSessions">
+                        0
+                    </strong>
+
+                    <span>
+                        Completed Study Sessions
+                    </span>
+
+                </div>
+
+
+                <div class="activity-note">
+
+                    <i class="fa-solid fa-circle-info"></i>
+
+                    Data updates automatically from your
+                    Planner and Pomodoro sessions.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- GOALS -->
+
+        <section class="analytics-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="card-label">
+                        PROGRESS
+                    </span>
+
+                    <h2>
+                        <i class="fa-solid fa-bullseye"></i>
+                        Study Goals
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="goal-grid">
+
+                <div class="goal-item">
+
+                    <div>
+                        <span>Weekly Study</span>
+
+                        <strong id="weeklyGoalText">
+                            0%
+                        </strong>
+                    </div>
+
+                    <div class="progress">
+                        <div id="weeklyGoalBar"
+                             class="progress-fill">
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="goal-item">
+
+                    <div>
+                        <span>Daily Focus</span>
+
+                        <strong id="dailyGoalText">
+                            0%
+                        </strong>
+                    </div>
+
+                    <div class="progress">
+                        <div id="dailyGoalBar"
+                             class="progress-fill">
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="goal-item">
+
+                    <div>
+                        <span>Study Consistency</span>
+
+                        <strong id="streakGoalText">
+                            0%
+                        </strong>
+                    </div>
+
+                    <div class="progress">
+                        <div id="streakGoalBar"
+                             class="progress-fill">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+            AI Study Planner
+            <span>•</span>
+            Real-time Analytics
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script src="analytics.js"></script>
+
+</body>
+</html>

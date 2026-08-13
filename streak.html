@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Study Streak | AI Study Planner</title>
+
+    <link rel="stylesheet" href="streak.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="streak-container">
+
+        <a href="dashboard.html" class="back">
+            <i class="fa-solid fa-arrow-left"></i>
+            Dashboard
+        </a>
+
+        <header>
+            <i class="fa-solid fa-fire"></i>
+            <h1>Study Streak</h1>
+            <p>Stay consistent and keep learning every day.</p>
+        </header>
+
+        <section class="streak-card">
+
+            <div class="fire">
+                🔥
+            </div>
+
+            <h2 id="streakCount">0 Days</h2>
+
+            <p id="streakMessage">
+                Start studying today to begin your streak!
+            </p>
+
+            <button id="studyBtn">
+                <i class="fa-solid fa-book-open"></i>
+                Mark Today as Studied
+            </button>
+
+        </section>
+
+        <section class="stats">
+
+            <div class="stat">
+                <i class="fa-solid fa-fire"></i>
+                <h3 id="currentStreak">0</h3>
+                <p>Current Streak</p>
+            </div>
+
+            <div class="stat">
+                <i class="fa-solid fa-trophy"></i>
+                <h3 id="bestStreak">0</h3>
+                <p>Best Streak</p>
+            </div>
+
+            <div class="stat">
+                <i class="fa-solid fa-calendar-check"></i>
+                <h3 id="totalDays">0</h3>
+                <p>Total Study Days</p>
+            </div>
+
+        </section>
+
+        <section class="calendar-card">
+
+            <h2>
+                <i class="fa-solid fa-calendar"></i>
+                Study Calendar
+            </h2>
+
+            <div id="calendar"></div>
+
+        </section>
+
+    </div>
+<link rel="stylesheet" href="streak.css">
+<script src="streak.js"></script>
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Study Planner</title>
+
+    <link rel="stylesheet" href="planner.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+        <div class="brand-icon">
+            <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+
+        <span>AI Planner</span>
+    </div>
+
+    <nav>
+
+        <a href="dashboard.html">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+        </a>
+
+        <a href="planner.html" class="active">
+            <i class="fa-solid fa-calendar-check"></i>
+            Planner
+        </a>
+
+        <a href="calendar.html">
+            <i class="fa-solid fa-calendar-days"></i>
+            Calendar
+        </a>
+
+        <a href="chatbot.html">
+            <i class="fa-solid fa-robot"></i>
+            AI Assistant
+        </a>
+
+        <a href="analytics.html">
+            <i class="fa-solid fa-chart-line"></i>
+            Analytics
+        </a>
+
+        <a href="login.html" class="logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </a>
+
+    </nav>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <div>
+            <h1>Study Planner</h1>
+            <p id="currentDate">Loading date...</p>
+        </div>
+
+        <div class="top-right">
+
+            <div class="live-clock" id="liveClock">
+                00:00:00
+            </div>
+
+            <div class="profile">
+                <div class="profile-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <span>Student</span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= SUMMARY ================= -->
+
+    <section class="summary-grid">
+
+        <div class="summary-card">
+
+            <div class="summary-icon blue">
+                <i class="fa-solid fa-list-check"></i>
+            </div>
+
+            <div>
+                <span>Total Tasks</span>
+                <strong id="totalTasks">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon green">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+
+            <div>
+                <span>Completed</span>
+                <strong id="completedTasks">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon cyan">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+
+            <div>
+                <span>Study Time</span>
+                <strong id="studyTime">0h 0m</strong>
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon purple">
+                <i class="fa-solid fa-fire"></i>
+            </div>
+
+            <div>
+                <span>Progress</span>
+                <strong id="progressPercent">0%</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PROGRESS ================= -->
+
+    <section class="progress-card">
+
+        <div class="progress-header">
+
+            <div>
+                <span>Today's Progress</span>
+                <h2 id="progressText">0 of 0 tasks completed</h2>
+            </div>
+
+            <strong id="progressNumber">0%</strong>
+
+        </div>
+
+        <div class="progress-track">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+
+    </section>
+
+
+    <!-- ================= ADD TASK ================= -->
+
+    <section class="planner-card">
+
+        <div class="section-heading">
+
+            <div>
+                <h2>
+                    <i class="fa-solid fa-plus"></i>
+                    Add Study Task
+                </h2>
+
+                <p>Create and manage your study sessions.</p>
+            </div>
+
+        </div>
+
+
+        <form id="taskForm">
+
+            <div class="form-grid">
+
+                <div class="input-group">
+
+                    <label>Subject</label>
+
+                    <select id="subject" required>
+
+                        <option value="">Select subject</option>
+
+                        <option>Database Management System</option>
+                        <option>Java</option>
+                        <option>Python</option>
+                        <option>Operating System</option>
+                        <option>Data Structures</option>
+                        <option>Computer Networks</option>
+                        <option>Other</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Topic</label>
+
+                    <input
+                        type="text"
+                        id="topic"
+                        placeholder="e.g. Normalization"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Date</label>
+
+                    <input
+                        type="date"
+                        id="taskDate"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Start Time</label>
+
+                    <input
+                        type="time"
+                        id="taskTime"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Duration</label>
+
+                    <select id="duration">
+
+                        <option value="15">15 minutes</option>
+                        <option value="25">25 minutes</option>
+                        <option value="30" selected>30 minutes</option>
+                        <option value="45">45 minutes</option>
+                        <option value="60">1 hour</option>
+                        <option value="90">1.5 hours</option>
+                        <option value="120">2 hours</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Priority</label>
+
+                    <select id="priority">
+
+                        <option value="Low">Low</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="High">High</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="input-group full">
+
+                <label>Notes</label>
+
+                <textarea
+                    id="notes"
+                    placeholder="Add notes for this study session..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button type="submit" class="primary-btn">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Add Task
+
+                </button>
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    id="generateBtn"
+                >
+
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    Generate Study Plan
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- ================= TASK CONTROLS ================= -->
+
+    <section class="task-section">
+
+        <div class="task-header">
+
+            <div>
+
+                <h2>
+                    <i class="fa-solid fa-list-check"></i>
+                    My Study Tasks
+                </h2>
+
+                <p>Your saved study schedule.</p>
+
+            </div>
+
+
+            <div class="controls">
+
+                <input
+                    type="search"
+                    id="searchTask"
+                    placeholder="Search tasks..."
+                >
+
+
+                <select id="filterSubject">
+
+                    <option value="all">All Subjects</option>
+
+                    <option>Database Management System</option>
+                    <option>Java</option>
+                    <option>Python</option>
+                    <option>Operating System</option>
+                    <option>Data Structures</option>
+                    <option>Computer Networks</option>
+
+                </select>
+
+
+                <select id="filterStatus">
+
+                    <option value="all">All Tasks</option>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div id="taskList" class="task-list">
+
+            <!-- JS inserts tasks -->
+
+        </div>
+
+
+        <div id="emptyState" class="empty-state">
+
+            <i class="fa-solid fa-calendar-plus"></i>
+
+            <h3>No study tasks yet</h3>
+
+            <p>Add your first task above.</p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= EDIT MODAL ================= -->
+
+<div id="editModal" class="modal">
+
+    <div class="modal-content">
+
+        <button class="close-modal" id="closeModal">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <h2>Edit Study Task</h2>
+
+        <form id="editForm">
+
+            <input type="hidden" id="editId">
+
+            <div class="input-group">
+
+                <label>Subject</label>
+
+                <select id="editSubject">
+
+                    <option>Database Management System</option>
+                    <option>Java</option>
+                    <option>Python</option>
+                    <option>Operating System</option>
+                    <option>Data Structures</option>
+                    <option>Computer Networks</option>
+                    <option>Other</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Topic</label>
+
+                <input id="editTopic" required>
+
+            </div>
+
+
+            <div class="modal-row">
+
+                <div class="input-group">
+
+                    <label>Date</label>
+
+                    <input type="date" id="editDate" required>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Time</label>
+
+                    <input type="time" id="editTime" required>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-row">
+
+                <div class="input-group">
+
+                    <label>Duration</label>
+
+                    <select id="editDuration">
+
+                        <option value="15">15 minutes</option>
+                        <option value="25">25 minutes</option>
+                        <option value="30">30 minutes</option>
+                        <option value="45">45 minutes</option>
+                        <option value="60">1 hour</option>
+                        <option value="90">1.5 hours</option>
+                        <option value="120">2 hours</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Priority</label>
+
+                    <select id="editPriority">
+
+                        <option>Low</option>
+                        <option>Medium</option>
+                        <option>High</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Notes</label>
+
+                <textarea id="editNotes"></textarea>
+
+            </div>
+
+
+            <button class="primary-btn full-btn">
+
+                Save Changes
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="planner.js"></script>
+
+</body>
+</html>

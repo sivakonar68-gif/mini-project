@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pomodoro | AI Study Planner</title>
+
+    <link rel="stylesheet" href="pomodoro.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+    <div class="logo">
+        <div class="logo-icon">
+            <i class="fa-solid fa-brain"></i>
+        </div>
+
+        <span>
+            AI Study<br>
+            Planner
+        </span>
+    </div>
+
+    <div class="nav-section">
+
+        <div class="nav-title">MAIN</div>
+
+        <a href="dashboard.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="planner.html">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>Planner</span>
+        </a>
+
+        <a href="pomodoro.html" class="active">
+            <i class="fa-solid fa-clock"></i>
+            <span>Pomodoro</span>
+        </a>
+
+        <a href="analytics.html">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Analytics</span>
+        </a>
+
+    </div>
+
+    <div class="nav-section account-section">
+
+        <div class="nav-title">ACCOUNT</div>
+
+        <a href="settings.html">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+        </a>
+
+        <a href="#" id="logoutBtn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </a>
+
+    </div>
+
+</aside>
+
+<div class="page">
+
+    <!-- TOP -->
+    <header class="topbar">
+
+        <div>
+            <span class="eyebrow">
+                <i class="fa-solid fa-bolt"></i>
+                FOCUS CENTER
+            </span>
+
+            <h1>Pomodoro</h1>
+
+            <p>
+                Focus hard. Break properly. Repeat.
+            </p>
+        </div>
+
+        <!-- FUNNY STICKER -->
+        <div class="funny-sticker">
+
+            <div class="sticker-emoji">
+                🗿
+            </div>
+
+            <div>
+                <strong id="funnyText">
+                    LOCK IN BRO.
+                </strong>
+
+                <span>
+                    Your GPA is watching 👀
+                </span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- STATS -->
+    <section class="quick-stats">
+
+        <div class="stat-card">
+
+            <div class="stat-icon blue">
+                <i class="fa-solid fa-fire"></i>
+            </div>
+
+            <div>
+                <span>Study Streak</span>
+                <strong id="streakValue">0 days</strong>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon purple">
+                <i class="fa-solid fa-star"></i>
+            </div>
+
+            <div>
+                <span>XP Earned</span>
+                <strong id="xpValue">0 XP</strong>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon green">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+
+            <div>
+                <span>Today's Focus</span>
+                <strong id="todayFocus">0 min</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MODE -->
+    <section class="mode-section">
+
+        <button class="mode active" data-mode="focus">
+
+            <i class="fa-solid fa-fire"></i>
+
+            <div>
+                <strong>Deep Focus</strong>
+                <span>25 min</span>
+            </div>
+
+        </button>
+
+
+        <button class="mode" data-mode="short">
+
+            <i class="fa-solid fa-mug-hot"></i>
+
+            <div>
+                <strong>Short Break</strong>
+                <span>5 min</span>
+            </div>
+
+        </button>
+
+
+        <button class="mode" data-mode="long">
+
+            <i class="fa-solid fa-moon"></i>
+
+            <div>
+                <strong>Long Break</strong>
+                <span>15 min</span>
+            </div>
+
+        </button>
+
+    </section>
+
+
+    <!-- MAIN GRID -->
+    <main class="main-grid">
+
+
+        <!-- TIMER -->
+        <section class="timer-card">
+
+            <div class="timer-top">
+
+                <span id="timerMode">
+                    DEEP FOCUS
+                </span>
+
+                <span id="sessionNumber">
+                    SESSION 1 / 3
+                </span>
+
+            </div>
+
+
+            <!-- SUBJECT -->
+            <div class="subject-box">
+
+                <label>
+                    <i class="fa-solid fa-book-open"></i>
+                    What are you studying?
+                </label>
+
+                <select id="subject">
+
+                    <option value="DBMS">
+                        DBMS
+                    </option>
+
+                    <option value="Java">
+                        Java
+                    </option>
+
+                    <option value="Python">
+                        Python
+                    </option>
+
+                    <option value="Operating System">
+                        Operating System
+                    </option>
+
+                    <option value="Data Structures">
+                        Data Structures
+                    </option>
+
+                    <option value="Computer Networks">
+                        Computer Networks
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- TIMER -->
+            <div class="timer-wrap">
+
+                <div class="timer-ring">
+
+                    <div class="timer-inner">
+
+                        <div id="timer">
+                            25:00
+                        </div>
+
+                        <span id="timerStatus">
+                            Ready when you are
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTROLS -->
+            <div class="controls">
+
+                <button
+                    id="resetBtn"
+                    class="control secondary">
+
+                    <i class="fa-solid fa-rotate-left"></i>
+
+                    Reset
+
+                </button>
+
+
+                <button
+                    id="startBtn"
+                    class="control primary">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    Start Focus
+
+                </button>
+
+
+                <button
+                    id="skipBtn"
+                    class="control secondary">
+
+                    <i class="fa-solid fa-forward"></i>
+
+                    Skip
+
+                </button>
+
+            </div>
+
+
+            <p class="quote" id="quote">
+                "25 minutes. No excuses."
+            </p>
+
+        </section>
+
+
+        <!-- RIGHT PANEL -->
+        <aside class="side-panel">
+
+
+            <!-- TODAY GOAL -->
+            <div class="goal-card">
+
+                <div class="card-title">
+
+                    <span>
+                        TODAY'S GOAL
+                    </span>
+
+                    <i class="fa-solid fa-bullseye"></i>
+
+                </div>
+
+
+                <div class="goal-number">
+
+                    <strong id="goalMinutes">
+                        0
+                    </strong>
+
+                    <span>/ 120 min</span>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <div id="goalProgress"></div>
+
+                </div>
+
+
+                <p>
+                    Keep going. You're building momentum.
+                </p>
+
+            </div>
+
+
+            <!-- CURRENT SUBJECT -->
+            <div class="subject-card">
+
+                <div class="card-title">
+
+                    <span>
+                        CURRENT SUBJECT
+                    </span>
+
+                    <i class="fa-solid fa-book"></i>
+
+                </div>
+
+                <h3 id="currentSubject">
+                    DBMS
+                </h3>
+
+                <p>
+                    <span id="subjectMinutes">0</span>
+                    minutes studied today
+                </p>
+
+            </div>
+
+
+            <!-- MINI MOTIVATION -->
+            <div class="motivation-card">
+
+                <span>
+                    RANDOM THOUGHT
+                </span>
+
+                <h3 id="motivation">
+                    Bro... one session won't kill you. 😭
+                </h3>
+
+                <button id="motivationBtn">
+                    Give me another one
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+
+    <!-- SESSIONS -->
+    <section class="sessions">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="eyebrow">
+                    TODAY
+                </span>
+
+                <h2>
+                    Your Focus Sessions
+                </h2>
+            </div>
+
+            <span id="progressText">
+                0 / 3 completed
+            </span>
+
+        </div>
+
+
+        <div class="session-grid">
+
+            <div class="session-item" data-session="1">
+
+                <div class="session-num">
+                    01
+                </div>
+
+                <div>
+                    <strong>
+                        Deep Focus
+                    </strong>
+
+                    <span>
+                        25 minutes
+                    </span>
+                </div>
+
+                <i class="fa-solid fa-circle-check"></i>
+
+            </div>
+
+
+            <div class="session-item" data-session="2">
+
+                <div class="session-num">
+                    02
+                </div>
+
+                <div>
+                    <strong>
+                        Deep Focus
+                    </strong>
+
+                    <span>
+                        25 minutes
+                    </span>
+                </div>
+
+                <i class="fa-solid fa-circle-check"></i>
+
+            </div>
+
+
+            <div class="session-item" data-session="3">
+
+                <div class="session-num">
+                    03
+                </div>
+
+                <div>
+                    <strong>
+                        Deep Focus
+                    </strong>
+
+                    <span>
+                        25 minutes
+                    </span>
+                </div>
+
+                <i class="fa-solid fa-circle-check"></i>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        AI Study Planner
+        <span>•</span>
+        Focus smarter, not longer.
+    </footer>
+
+</div>
+
+
+<script src="pomodoro.js"></script>
+
+</body>
+</html>
